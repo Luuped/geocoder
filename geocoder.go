@@ -79,7 +79,7 @@ func (g *Geocoder) Geocode(query map[string]string, exactlyOne bool) (interface{
 	for key, value := range query {
 		params.Set(key, value)
 	}
-	params.Set("format", "json")
+	params.Set("format", "jsonv2")
 	if exactlyOne {
 		params.Set("limit", "1")
 	}
@@ -111,7 +111,7 @@ func (g *Geocoder) Reverse(lat, lon float64, exactlyOne bool) (*Location, error)
 	params := url.Values{}
 	params.Set("lat", fmt.Sprintf("%f", lat))
 	params.Set("lon", fmt.Sprintf("%f", lon))
-	params.Set("format", "json")
+	params.Set("format", "jsonv2")
 	params.Set("addressdetails", "1")
 
 	url := g.constructURL(g.ReverseAPI, params)
